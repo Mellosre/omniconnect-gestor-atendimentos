@@ -1,0 +1,51 @@
+<div class="login-wrapper">
+  <main class="login-card">
+    <div class="login-header">
+      <div class="logo-box" aria-hidden="true">OC</div>
+      <h1 class="login-title">OmniConnect</h1>
+      <p class="login-subtitle">Gestão Integrada de Atendimentos - AACCP</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div *ngIf="errorMessage" class="error-banner" role="alert">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ errorMessage }}</span>
+      </div>
+
+      <div class="form-field">
+        <label for="email-input">E-mail corporativo / Usuário</label>
+        <input
+          id="email-input"
+          type="email"
+          formControlName="email"
+          placeholder="exemplo@comunidade.org"
+          required
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="senha-input">Palavra-passe / Senha</label>
+        <input
+          id="senha-input"
+          type="password"
+          formControlName="senha"
+          placeholder="Mínimo de 6 caracteres seguros"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn-submit"
+        [disabled]="loginForm.invalid"
+      >
+        Entrar no Sistema
+      </button>
+
+      <div class="login-footer">
+        <mat-icon aria-hidden="true">lock</mat-icon>
+        <span>Acesso protegido e autenticado via HTTPS/Argon2</span>
+      </div>
+    </form>
+  </main>
+</div>
